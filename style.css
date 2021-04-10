@@ -18,18 +18,19 @@ canvas {
   margin-top: 20px;
   margin-bottom: 20px;
   border-style: solid;
+  border-radius: 10px;
   border-width: 5px;
   border-color: black;
 }
 
-input {
+button {
   display: block;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-button {
+slider {
   display: block;
   margin: auto;
   margin-top: 20px;
