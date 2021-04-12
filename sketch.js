@@ -1,13 +1,13 @@
 
 var canvas;
+
 var bgR = 80; bgG = 100; bgB = 200;
 
-let lineR, lineG, lineB;
-let lineWeight;
+var lineR, lineG, lineB;
+var lineWeight;
 
-let input;
-let img;
-let imgAdd;
+let mousePos = [];
+
 let imgSave;
 let imgReset;
 
@@ -23,6 +23,12 @@ function setup() {
   bgG.position(10, 40);
   bgB = createSlider(0, 255, 200);
   bgB.position(10, 60);
+
+  // bgR = parseInt(document.getElementById('red').value);
+  // bgG = parseInt(document.getElementById('green').value);
+  // bgB = parseInt(document.getElementById('blue').value);
+
+  // background(bgR, bgG, bgB);
 
   background(bgR.value(), bgG.value(), bgB.value());
 
@@ -83,13 +89,24 @@ function genDraw() {
     stroke(lineR.value(), lineG.value(), lineB.value());
     strokeWeight(lineWeight.value());
     line(mouseX, mouseY, pmouseX, pmouseY);
+    mousePos.push([mouseX, mouseY]);
   }
+
+  console.log(mousePos);
 
 }
 
 function saveImage() {
   saveCanvas(canvas, 'myDrawing', 'png');
 }
+
+// function reset() {
+//
+//   bgR = parseInt(document.getElementById('red').value);
+//   bgG = parseInt(document.getElementById('green').value);
+//   bgB = parseInt(document.getElementById('blue').value);
+//
+// }
 
 function reset() {
   background(bgR.value(), bgG.value(), bgB.value());
