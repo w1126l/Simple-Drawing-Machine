@@ -111,23 +111,23 @@ function genDraw() {
 
   if(mouseIsPressed){
 
+    strokeWeight(lineWeight);
+
     if(mouseButton === LEFT) {
       // bgFade = color(bgRed, bgGreen, bgBlue, 5); // 3.10 variable for alpha fade
       // background(bgFade); // 3.10 for alpha fade
       //stroke((lineRed * noise(n+10)), (lineGreen * noise(n+15)), (lineBlue * noise(n+20))); // 3.12 variable for perlin noise
       stroke(lineRed, lineGreen, lineBlue);
-      strokeWeight(lineWeight);
-      line(mouseX, mouseY, pmouseX, pmouseY);
-      mousePos.push([mouseX, mouseY]);
       //n += 0.01;
     }
 
     if(keyIsPressed === true) {
       stroke(bgRed, bgGreen, bgBlue);
-      strokeWeight(lineWeight);
-      line(mouseX, mouseY, pmouseX, pmouseY);
-      mousePos.push([mouseX, mouseY]);
     }
+
+    line(mouseX, mouseY, pmouseX, pmouseY);
+    mousePos.push([mouseX, mouseY]);
+
   }
 }
 
