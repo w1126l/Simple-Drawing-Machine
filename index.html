@@ -11,24 +11,55 @@
 </head>
 
 <body>
-  <h1>Drawing Machine!</h1>
 
-  <div id="sketch-holder"></div>
+  <h1 style="padding-left:0px">Drawing Machine!</h1>
 
-  <!-- <form>
-    <label for="red">RED</label>
-    <input type="range" min="0" max="255" step="1" value="0" id="red" name="red" onchange="reset()">
+  <div id="drawing-space">
 
-    <label for="green">GREEN</label>
-    <input type="range" min="0" max="255" step="1" value="0" id="green" name="green" onchange="reset()">
+    <div id="sketch-holder"></div>
 
-    <label for="blue">BLUE</label>
-    <input type="range" min="0" max="255" step="1" value="0" id="blue" name="blue" onchange="reset()">
-  </form> -->
+  </div>
 
-  <div id="reset-button"></div>
+  <div id="side-controls">
 
-  <div id="save-button"></div>
+    <h1 style="color:rgb(151, 110, 215)">Control Panel<br></h1>
+
+    <div id="background-controls">
+
+      <h2 style="padding-bottom:0px;">Background Color</h2>
+      <div id="background-red"><h3>Red</h3></div>
+      <div id="background-green"><h3>Green</h3></div>
+      <div id="color-block-background"></div>
+      <div id="background-blue"><h3>Blue</h3></div>
+      <div id="background-change-button"></div>
+
+    </div>
+
+    <div id="line-controls">
+
+
+      <div id="line-red"><h2><br>Line Color</h2><h3>Red</h3></div>
+      <div id="line-green"><h3>Green</h3></div>
+      <div id="color-block-line"></div>
+      <div id="line-blue"><h3>Blue</h3></div>
+
+    </div>
+
+    <div id="line-weight-control">
+
+
+      <div id="line-weight"><h2 style="padding-bottom:0px"><br>Line Weight</h2></div>
+
+    </div>
+
+  </div>
+
+  <div id="bottom-controls">
+
+    <div id="reset-button"></div>
+    <div id="save-button"></div>
+
+  </div>
 
 </body>
 
