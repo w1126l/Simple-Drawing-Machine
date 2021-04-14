@@ -1,32 +1,41 @@
 
 let canvas;
 
-let bgRedSlider, bgGreenSlider, bgBlueSlider;
+// background stuff
+let bgRedSlider, bgGreenSlider, bgBlueSlider; // sliders for background colors
+let bgRed, bgGreen, bgBlue; // background color variables
+// background color block stuff
+let backgroundColorDiv; // div for background color block
+let backgroundColorComp; // combined color of background rgb colors
 
-let bgRed = 100, bgGreen = 80, bgBlue = 150;
+// line stuff
+let lineRedSlider, lineGreenSlider, lineBlueSlider; // sliders for line colors
+let lineRed, lineGreen, lineBlue; // line color variables
+// line color block stuff
+let lineColorDiv; // div for line color block
+let lineColorComp; // combined color of line rgb colors
 
-let backgroundColorDiv;
-let backgroundColorComp;
+// line weight stuff
+let lineWeightSlider; // slider for line weight
+let lineWeight; // line weight variable
 
-let lineRedSlider, lineGreenSlider, lineBlueSlider;
-let lineRed = 150, lineGreen = 100, lineBlue = 80;
+// buttons
+let backgroundReset; // resets sketch to show new background color
+let imgSave; // saves image
+let imgReset; // resets sketch
 
-let lineColorDiv;
-let lineColorComp;
+let mousePos = []; // 3.5 array of old mouse positions
 
-let lineWeightSlider;
+//let bgFade; // 3.10 variable for alpha fade
 
-let mousePos = [];
-
-let backgroundReset;
-
-let imgSave;
-let imgReset;
+//let n; // 3.12 variable for perlin noise
 
 function setup() {
 
+  // canvas setup
   frameRate(60);
   canvas = createCanvas((800), (800));
+  //canvas = createCanvas(windowWidth, windowHeight); // 3.9 making canvas fullscreen
   canvas.parent('sketch-holder');
 
   bgRedSlider = createSlider(0, 255, 200);
@@ -53,37 +62,30 @@ function setup() {
   backgroundReset.parent('background-change-button');
   backgroundReset.mousePressed(reset);
 
-  // backgroundColorComp = color(bgRed, bgGreen, bgBlue);
-  // background(backgroundColorComp);
-
   lineRedSlider = createSlider(0, 255, 255);
   lineRedSlider.parent('line-red');
   lineRedSlider.style('width', '150px');
   lineRed = lineRedSlider.value();
-  //lineRedSlider.position(10, 120);
+
   lineGreenSlider = createSlider(0, 255, 220);
   lineGreenSlider.parent('line-green');
   lineGreenSlider.style('width', '150px');
   lineGreen = lineGreenSlider.value();
-  //lineGreenSlider.position(10, 140);
+
   lineBlueSlider = createSlider(0, 255, 220);
   lineBlueSlider.parent('line-blue');
   lineBlueSlider.style('width', '150px');
   lineBlue = lineBlueSlider.value();
-  //lineBlueSlider.position(10, 160);
 
   lineColorDiv = createDiv();
   lineColorDiv.parent("color-block-line");
   lineColorDiv.style('width', '100%');
   lineColorDiv.style('height', '100%');
 
-  // lineColorComp = color(lineRed, lineGreen, lineBlue);
-  // background(lineColorComp);
-
   lineWeightSlider = createSlider(1, 50, 20);
   lineWeightSlider.parent('line-weight');
   lineWeightSlider.style('width', '150px');
-  //lineWeightSlider.position(10, 220);
+  lineWeight = lineWeightSlider.value();
 
   imgSave = createButton('Save Your Drawing as a png File!');
   imgSave.parent('save-button');
@@ -95,24 +97,38 @@ function setup() {
 
   background(bgRed, bgGreen, bgBlue);
 
+  //n = 0; // 3.12 variable for perlin noise
 }
 
 function draw() {
 
-  genDraw();
-  genColorBlock();
+  genDraw(); // line drawing
+  genColorBlock(); // color blocks
 
 }
 
 function genDraw() {
 
-  if (mouseIsPressed){
-    stroke(lineRedSlider.value(), lineGreenSlider.value(), lineBlueSlider.value());
-    strokeWeight(lineWeightSlider.value());
-    line(mouseX, mouseY, pmouseX, pmouseY);
-    mousePos.push([mouseX, mouseY]);
-  }
+  if(mouseIsPressed){
 
+    if(mouseButton === LEFT) {
+      // bgFade = color(bgRed, bgGreen, bgBlue, 5); // 3.10 variable for alpha fade
+      // background(bgFade); // 3.10 for alpha fade
+      //stroke((lineRed * noise(n+10)), (lineGreen * noise(n+15)), (lineBlue * noise(n+20))); // 3.12 variable for perlin noise
+      stroke(lineRed, lineGreen, lineBlue);
+      strokeWeight(lineWeight);
+      line(mouseX, mouseY, pmouseX, pmouseY);
+      mousePos.push([mouseX, mouseY]);
+      //n += 0.01;
+    }
+
+    if(keyIsPressed === true) {
+      stroke(bgRed, bgGreen, bgBlue);
+      strokeWeight(lineWeight);
+      line(mouseX, mouseY, pmouseX, pmouseY);
+      mousePos.push([mouseX, mouseY]);
+    }
+  }
 }
 
 function genColorBlock() {
