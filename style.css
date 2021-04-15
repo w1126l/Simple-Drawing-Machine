@@ -8,8 +8,8 @@ body {
 
 h1 {
   text-align: left;
-  padding-left: 20px;
   padding-bottom: 10px;
+  padding-left: 20px;
 }
 
 h2 {
@@ -40,6 +40,10 @@ p {
   float: left;
   width: 800px;
   height: 800px;
+  /* 3.9 for making the canvas fu11screen */
+  /* float: right;
+  width: 800px;
+  height: 800px; */
 }
 
 canvas {
@@ -83,6 +87,10 @@ canvas {
   width: 400px;
   height: 800px;
   border-top-right-radius: 10px;
+  /* 3.9 for making the canvas fu11screen */
+  /* float: left;
+  width: 400px;
+  height: 800px; */
 }
 
 input {
@@ -156,6 +164,16 @@ input:hover {
   background-color: rgba(255, 255, 255, 0.5);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  /* 3.9 for making the canvas fu11screen */
+  /* clear: both;
+  display: block;
+  float: left;
+  width: 1197px;
+  height: 80px; */
+}
+
+pre {
+
 }
 
 #reset-button {
@@ -167,7 +185,7 @@ input:hover {
 #save-button {
   margin: 20px;
   padding-top: 10px;
-  float: left;
+  float: right;
 }
 
 button {
